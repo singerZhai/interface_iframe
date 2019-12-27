@@ -39,7 +39,8 @@ def index():
             rsp['code'] = 200
             rsp['phone_code'] = phone_code(4)
             rsp['msg'] = 'success'
-            # write_rsp('phone_code', json.dumps(rsp), flag=1)
+            # todo 自定义写data函数
+
             return json.dumps(rsp)
         else:
             rsp['code'] = 202

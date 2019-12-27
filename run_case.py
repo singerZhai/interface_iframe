@@ -49,7 +49,7 @@ def run_case():
                 success_list.append((api[2], 'OK'))
             except Exception:
                 failed_list.append((api[2], 'failed', traceback.format_exc()))
-                traceback.print_exc()
+                # traceback.print_exc()
                 print(api[2].ljust(50) + 'failed'.rjust(50))
                 Log.get_log().error(traceback.format_exc())
 

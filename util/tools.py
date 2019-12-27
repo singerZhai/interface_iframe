@@ -9,6 +9,8 @@ import random
 import string
 import functools
 import traceback
+from json import JSONDecodeError
+
 import requests
 from config import web_headers, urls
 from util.logger import Log
@@ -84,11 +86,20 @@ def _assert(file_path, rsp, skip_path_list):
             raise TypeError("skip_path_list must be list")
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
-            old_rsp = json.loads(f.read())
+            try:
+                old_rsp = json.loads(f.read())
+            except JSONDecodeError:
+                Log.get_log().error("解析原有json静态文件出错")
+                f1 = open(file_path, 'wb')
+                f1.truncate()
+                f1.close()
         if not check_json(rsp):
             Log.get_log().error("response.text's type isn't json")
             return
         new_rsp = json.loads(rsp)
+        if 'old_rsp' not in dir():
+            Log.get_log().error('old_rsp is not defined')
+            return
         if len(old_rsp) != len(new_rsp):
             return
         Log.get_log().info('old: ' + str(old_rsp))
@@ -116,15 +127,14 @@ def _assert(file_path, rsp, skip_path_list):
                 raise
 
 
-def write_rsp(filename, rsp, skip_path_list=None, flag=None):
+def write_rsp(filename, rsp, skip_path_list=None):
     result = rename_test_func(filename)
     path = os.path.join(res_file_path, result)
     res_path = path.replace("\\", '/')
     if not os.path.exists(res_path):
         os.mkdir(res_path)
     file_path = res_path + '/{}.json'.format(filename)
-    if not flag:
-        _assert(file_path, rsp, skip_path_list)
+    _assert(file_path, rsp, skip_path_list)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(rsp)
 

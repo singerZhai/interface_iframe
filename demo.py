@@ -45,4 +45,6 @@ url = 'https://172.16.0.220/uc/v1/login'
 # rsp = requests.post(url='http://127.0.0.1:5000/getCode', json={'timestamp': md5(int(time.time()))})
 # print(rsp.text)
 
-
+# 判断变量是否定义
+demo = '123'
+print('demo' in dir())
