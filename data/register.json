@@ -1,0 +1,45 @@
+{
+  "0": {
+    "skip": "1",
+    "api": "test_register.TestRegister.test_register_success",
+    "mobile": "15611066631",
+    "grade": "03-2018",
+    "grade_type": "0",
+    "area_info": "北京_北京_昌平区",
+    "school": "丰润二中",
+    "source_type": "0",
+    "notes": "注册成功"
+  },
+  "1": {
+    "skip": "1",
+    "api": "test_register.TestRegister.test_register_user_exist",
+    "mobile": "15611066630",
+    "grade": "01-2008",
+    "grade_type": "0",
+    "area_info": "北京_北京_昌平区",
+    "school": "麻省理工大学",
+    "source_type": "0"
+  },
+  "2": {
+    "skip": "1",
+    "api": "test_register.TestRegister.test_register_user_exist",
+    "*": "mobile,grade,grade_type,area_info,school,source_type",
+    "mobile": "15611066630",
+    "grade": "01-2008",
+    "grade_type": "0",
+    "area_info": "北京_北京_昌平区",
+    "school": "麻省理工大学",
+    "source_type": "0"
+  },
+  "3": {
+    "skip": "1",
+    "api": "test_register.TestRegister.test_register_user_exist",
+    "?": "mobile,grade,grade_type,area_info,school,source_type",
+    "mobile": "15611066630",
+    "grade": "01-2008",
+    "grade_type": "0",
+    "area_info": "北京_北京_昌平区",
+    "school": "麻省理工大学",
+    "source_type": "0"
+  }
+}

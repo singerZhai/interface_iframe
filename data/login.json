@@ -1,0 +1,44 @@
+{
+  "0": {
+    "skip": 1,
+    "api": "test_login.TestLogin.test_login",
+    "account": "JD1574675566298157",
+    "login_type": "1",
+    "user_pwd": "555645",
+    "notes": "登录成功"
+  },
+  "1": {
+    "skip": 1,
+    "api": "test_login.TestLogin.test_login",
+    "account": "J566298157",
+    "login_type": "1",
+    "user_pwd": "555645",
+    "notes": "用户名未注册"
+  },
+  "2": {
+    "skip": 1,
+    "api": "test_login.TestLogin.test_login",
+    "account": "JD1574675566298157",
+    "login_type": "1",
+    "user_pwd": "11112",
+    "notes": "密码错误"
+  },
+  "3": {
+    "skip": 1,
+    "*": "account,login_type,user_pwd",
+    "api": "test_login.TestLogin.test_login",
+    "account": "JD1574675566298157",
+    "login_type": "1",
+    "user_pwd": "555645",
+    "notes": "所有参数依次删除"
+  },
+  "4": {
+    "skip": 1,
+    "?": "account,login_type,user_pwd",
+    "api": "test_login.TestLogin.test_login",
+    "account": "JD1574675566298157",
+    "login_type": "1",
+    "user_pwd": "555645",
+    "notes": "所有参数依次置空"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "0": {
+    "api": "test_get_code.TestGetCode.test_get_code_first",
+    "timestamp": "true",
+    "notes": "主流程"
+  },
+  "1": {
+    "api": "test_get_code.TestGetCode.test_get_code_second",
+    "timestamp": "false",
+    "notes": "时间戳不正确"
+  },
+  "2": {
+    "?": "timestamp",
+    "api": "test_get_code.TestGetCode.test_get_code_second",
+    "timestamp": "",
+    "notes": "所有参数依次置为空"
+  },
+  "3": {
+    "*": "timestamp",
+    "api": "test_get_code.TestGetCode.test_get_code_second",
+    "timestamp": "",
+    "notes": "所有参数依次不传"
+  }
+}
