@@ -52,9 +52,10 @@ def run_case():
                 # traceback.print_exc()
                 print(api[2].ljust(50) + 'failed'.rjust(50))
                 Log.get_log().error(traceback.format_exc())
-
-    Log.get_log().warning('success_counts: ----------> {} 条'.format(len(success_list)))
-    Log.get_log().warning('failed_counts:  ----------> {} 条'.format(len(failed_list)))
+    print('success_counts: ----------> {} 条'.format(len(success_list)))
+    print('failed_counts:  ----------> {} 条'.format(len(failed_list)))
+    Log.get_log().info('success_counts: ----------> {} 条'.format(len(success_list)))
+    Log.get_log().info('failed_counts:  ----------> {} 条'.format(len(failed_list)))
     success_list.extend(failed_list)
 
     for line, i in enumerate(success_list):
@@ -67,6 +68,8 @@ def run_case():
             xls.xls_write(line + 1, 3, i[2])
 
     xls.set_width_height(['A', 'B', 'C', 'D'], len(success_list))
+    if not os.path.exists('./report/'):
+        os.mkdir('./report/')
     xls.save('./report/{} report.xlsx'.format(time.strftime('%Y-%m-%d %H-%M-%S')))
 
 

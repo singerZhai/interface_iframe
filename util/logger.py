@@ -21,7 +21,8 @@ class Log(object):
             cls.log_time = time.strftime("%Y_%m_%d_")
             log_file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             log_file = os.path.join(log_file_path, 'log/{}.log'.format(time.strftime('%Y-%m-%d')))
-
+            if not os.path.exists(log_file):
+                os.mkdir(os.path.join(log_file_path, 'log'))
             fh = logging.FileHandler(log_file, 'a', encoding='utf-8')
             fh.setLevel(logging.INFO)
 

@@ -32,6 +32,7 @@ def index():
         if len(data) == 0:
             rsp['code'] = 204
             rsp['msg'] = '缺少必要参数'
+            print(rsp)
             return json.dumps(rsp)
         timestamp = int(time.time())
 
@@ -41,10 +42,12 @@ def index():
             rsp['msg'] = 'success'
             # todo 自定义写data函数
 
+            print(rsp)
             return json.dumps(rsp)
         else:
             rsp['code'] = 202
             rsp['msg'] = 'timestamp is false'
+            print(rsp)
             return json.dumps(rsp)
 
 

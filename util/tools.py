@@ -17,9 +17,9 @@ from util.logger import Log
 
 rsp_file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rsp_file_path = os.path.join(rsp_file_path, 'static')
-# res_file_path = rsp_file_path.replace('\\', '/')
+res_file_path = rsp_file_path.replace('\\', '/')
 
-res_file_path = rsp_file_path
+# res_file_path = rsp_file_path
 
 
 def json_tools(string):
@@ -72,7 +72,7 @@ def count_times(func):
 def _assert(file_path, rsp, skip_path_list):
     """
     断言json串，提供跳过指定key的验证
-    :param filename: 要验证的静态文件
+    :param file_path: 要验证的静态文件
     :param rsp: 本次返回的response.text
     :param skip_path_list: 跳过验证表达式的list
     :return: None
@@ -246,4 +246,5 @@ if __name__ == '__main__':
     #     res = f.read()
     # # print(res)
     # print(json_tools(dynamic_case(res)))
-    print(md5('123'))
+    # print(md5('123'))
+    print(res_file_path)
