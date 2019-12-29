@@ -31,7 +31,8 @@ def urls(key, test=None):
     urls_dict = {
         'register': '/uc/v1/reg',
         'login': '/uc/v1/login',
-        'getCode': '/getCode'
+        'getCode': '/getCode',
+        'assertCode': '/assertCode'
     }
     if test:
         return test_main_url + urls_dict.get(key)

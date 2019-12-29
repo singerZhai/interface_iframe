@@ -67,13 +67,13 @@ def assert_code():
         timestamp = int(time.time())
         code = read_rsp('phone_code', '["phone_code"]')
 
-        if data['phone_code'] == code and data['timestamp'] == md5(timestamp):
+        if data['code'] == code and data['timestamp'] == md5(timestamp):
             return json.dumps(rsp)
         if data['timestamp'] != md5(timestamp):
             rsp['code'] = 204
             rsp['msg'] = 'timestamp failed'
             return json.dumps(rsp)
-        if data['phone_code'] != code:
+        if data['code'] != code:
             rsp['code'] = 204
             rsp['msg'] = 'phone_code failed'
             return json.dumps(rsp)

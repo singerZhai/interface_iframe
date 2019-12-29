@@ -1,32 +1,32 @@
 {
   "0": {
-    "api": "test_assert_code.TestAssertCode.test_assert_code",
+    "api": "test_assert_code.TestAssertCode.test_assert_code_first",
     "code": "true",
     "timestamp": "true",
     "notes": "主流程"
   },
   "1": {
-    "api": "test_assert_code.TestAssertCode.test_assert_code",
+    "api": "test_assert_code.TestAssertCode.test_assert_code_first",
     "code": "true",
     "timestamp": "false",
     "notes": "时间戳错误"
   },
   "2": {
-    "api": "test_assert_code.TestAssertCode.test_assert_code",
+    "api": "test_assert_code.TestAssertCode.test_assert_code_first",
     "code": "false",
     "timestamp": "true",
     "notes": "code错误"
   },
   "3": {
     "?": "code,timestamp",
-    "api": "test_assert_code.TestAssertCode.test_assert_code",
+    "api": "test_assert_code.TestAssertCode.test_assert_code_first",
     "code": "true",
     "timestamp": "true",
     "notes": "所有参数依次置为空"
   },
   "4": {
     "*": "code,timestamp",
-    "api": "test_assert_code.TestAssertCode.test_assert_code",
+    "api": "test_assert_code.TestAssertCode.test_assert_code_second",
     "code": "true",
     "timestamp": "true",
     "notes": "所有参数依次不传"

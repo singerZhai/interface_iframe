@@ -11,4 +11,10 @@ class TestAssertCode(object):
         if data['code'] == 'true':
             data['code'] = read_rsp('phone_code', '["phone_code"]')
         if data['timestamp'] == 'true':
-            pass
+            data['timestamp'] = md5(int(time.time()))
+        rsp = send_req('assertCode', data, method='post', json=1, test=1)
+        write_rsp(static_file_name, rsp.text)
+
+    def test_assert_code_second(self, data, static_file_name):
+        rsp = send_req('assertCode', data, method='post', json=1, test=1)
+        write_rsp(static_file_name, rsp.text)

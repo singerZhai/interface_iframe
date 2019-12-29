@@ -137,21 +137,24 @@ def write_rsp(filename, rsp, skip_path_list=None, test=None):
     if not os.path.exists(res_path):
         os.mkdir(res_path)
     file_path = res_path + '/{}.json'.format(filename)
-    if test:
+    if not test:
         _assert(file_path, rsp, skip_path_list)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(rsp)
 
 
-def read_rsp(filename, path):
-    file_path = res_file_path + '/{}.json'.format(filename)
-    if not os.path.exists(file_path):
+def read_rsp(filename, key_path):
+    path = os.path.join(res_file_path, filename)
+    res_path = path.replace("\\", '/')
+    file_path = res_path + '/{}.json'.format(filename)
+    if not os.path.exists(res_path):
+        os.mkdir(res_path)
         with open(file_path, 'w', encoding='utf-8') as f:
             pass
     with open(file_path, 'r', encoding='utf-8') as f:
         json_data = json.loads(f.read())
     try:
-        res = eval('json_data' + path)
+        res = eval('json_data' + key_path)
     except Exception:
         Log.get_log().error("读取rsp参数出现错误")
         raise

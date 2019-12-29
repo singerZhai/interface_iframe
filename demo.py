@@ -52,7 +52,7 @@ from util.tools import md5
 
 data = {
     'timestamp': md5(int(time.time())),
-    'phone_code': 'L2gs'
+    'phone_code': '4dNc'
 }
 
 url = 'http://127.0.0.1:5000/assertCode'
