@@ -40,8 +40,7 @@ def index():
             rsp['code'] = 200
             rsp['phone_code'] = phone_code(4)
             rsp['msg'] = 'success'
-            # todo 自定义写data函数
-
+            write_rsp('phone_code', json.dumps(rsp), test=1)
             print(rsp)
             return json.dumps(rsp)
         else:
@@ -56,18 +55,31 @@ def assert_code():
     if request.method == 'POST':
         data = request.get_json()
         print(data)
-        code = read_rsp('phone_code', '["phone_code"]')
-        success_rsp = {
+        rsp = {
             'code': 200,
             'msg': 'success'
         }
-        failed_rsp = {
-            'code': 401,
-            'msg': 'failed'
-        }
-        if data['phone_code'] == code:
-            return json.dumps(success_rsp)
-        return json.dumps(failed_rsp)
+        if len(data) < 2:
+            rsp['code'] = 204
+            rsp['msg'] = '缺少必要参数'
+            print(rsp)
+            return json.dumps(rsp)
+        timestamp = int(time.time())
+        code = read_rsp('phone_code', '["phone_code"]')
+
+        if data['phone_code'] == code and data['timestamp'] == md5(timestamp):
+            return json.dumps(rsp)
+        if data['timestamp'] != md5(timestamp):
+            rsp['code'] = 204
+            rsp['msg'] = 'timestamp failed'
+            return json.dumps(rsp)
+        if data['phone_code'] != code:
+            rsp['code'] = 204
+            rsp['msg'] = 'phone_code failed'
+            return json.dumps(rsp)
+        rsp['code'] = 205
+        rsp['msg'] = '系统错误'
+        return json.dumps(rsp)
 
 
 if __name__ == '__main__':

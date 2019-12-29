@@ -10,7 +10,7 @@ import requests
 from config import web_headers
 from util.tools import md5
 
-url = 'https://172.16.0.220/uc/v1/login'
+# url = 'https://172.16.0.220/uc/v1/login'
 # url = 'https://jdapi.jd100.com/uc/v1/login'
 
 # header = {
@@ -45,6 +45,16 @@ url = 'https://172.16.0.220/uc/v1/login'
 # rsp = requests.post(url='http://127.0.0.1:5000/getCode', json={'timestamp': md5(int(time.time()))})
 # print(rsp.text)
 
-# 判断变量是否定义
-demo = '123'
-print('demo' in dir())
+# # 判断变量是否定义
+# demo = '123'
+# print('demo' in dir())
+
+
+data = {
+    'timestamp': md5(int(time.time())),
+    'phone_code': 'L2gs'
+}
+
+url = 'http://127.0.0.1:5000/assertCode'
+rsp = requests.post(url, json=data)
+print(rsp.text)

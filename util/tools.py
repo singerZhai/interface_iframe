@@ -127,14 +127,18 @@ def _assert(file_path, rsp, skip_path_list):
                 raise
 
 
-def write_rsp(filename, rsp, skip_path_list=None):
-    result = rename_test_func(filename)
+def write_rsp(filename, rsp, skip_path_list=None, test=None):
+    if not test:
+        result = rename_test_func(filename)
+    else:
+        result = filename
     path = os.path.join(res_file_path, result)
     res_path = path.replace("\\", '/')
     if not os.path.exists(res_path):
         os.mkdir(res_path)
     file_path = res_path + '/{}.json'.format(filename)
-    _assert(file_path, rsp, skip_path_list)
+    if test:
+        _assert(file_path, rsp, skip_path_list)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(rsp)
 
