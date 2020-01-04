@@ -152,7 +152,12 @@ def read_rsp(filename, key_path):
         with open(file_path, 'w', encoding='utf-8') as f:
             pass
     with open(file_path, 'r', encoding='utf-8') as f:
-        json_data = json.loads(f.read())
+        # 修复read_rsp方法读取错误json文件报错bug
+        try:
+            json_data = json.loads(f.read())
+        except JSONDecodeError:
+            Log.get_log().error("读取{}失败".format(filename))
+            return None
     try:
         res = eval('json_data' + key_path)
     except Exception:
